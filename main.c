@@ -15,7 +15,7 @@ int main() { // [TODO] Fill in the parameters
     filename = strdup(); // [TODO] Fill in the arguments
     input = fopen(filename, "r");
     if (input == NULL) {
-        fprintf(stderr, "Input file error\n");
+        fprintf(stderr, "Hello Input file error\n");
         exit(EXIT_FAILURE);
     }
 
