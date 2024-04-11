@@ -6,7 +6,7 @@ int main(int argc, char* argv[]) { // [TODO] Fill in the parameters
     FILE *input, *output;
     char *filename;
 
-    if (argv[1] != "try/*_sort.in") { // [TODO] Fill in the condition //argv속 파일명(추정)의 포멧이 정확한 것과 다르다면
+    if (strcmp(argv[1],"try/id_sort.in") != 0 || strcmp(argv[1],"try/name_sort.in") != 0) { // [TODO] Fill in the condition //argv속 파일명(추정)의 포멧이 정확한 것과 다르다면
         fprintf(stderr, "Command should be format like below\n");
         fprintf(stderr, "%s try/*_sort.in\n", argv[0]); // [TODO] Fill in the arguments 정확한 포멧 입력
         exit(EXIT_FAILURE);
@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) { // [TODO] Fill in the parameters
 
     strcpy(strstr(filename, "in"), "out");//filename의 in을 out으로 변환
     output = fopen(filename, "w");//[filename].out을 열기
-    if (output == NULL) {//[filename].out이 없다면
+    if (output == NULL) {//[filename].out이 열리지 않으면
         fprintf(stderr, "Output file error\n");
         exit(EXIT_FAILURE);
     }
@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) { // [TODO] Fill in the parameters
         char name[MAX_BUFFER_SIZE];
         int id;
 
-        sscanf(line, "name: %s major: %*s id: %s", name, &id); // [TODO] Fill in the arguments
+        sscanf(line, "name: %s major: %*s id: %d", name, &id); // [TODO] Fill in the arguments
         appendStudent(students, index, newStudent(name, id)); // [TODO] Fill in the arguments //creatStudent에서 만든 배열에 입력받은 학생 정보 넣기
     }
 
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) { // [TODO] Fill in the parameters
         break;
     
     case ID:
-        quickSort(); // [TODO] Fill in the arguments
+        quickSort(students, length, compareById); // [TODO] Fill in the arguments
         printStudents(output, students, length); // [TODO] Fill in the arguments
         break;
 

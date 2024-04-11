@@ -25,6 +25,6 @@ int countLines(FILE *input) { //줄 수(학생 수 반환)
     return count;
 }
 
-/* [TODO]
-   Implement function swap
-*/
+void swap(Student *a, Student *b){ 
+
+}
