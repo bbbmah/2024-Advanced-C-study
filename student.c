@@ -1,7 +1,7 @@
 #include "student.h"
 
-Student* createStudents(int n){ //nÁÙ ¸¸Å­ÀÇ ÇĞ»ı Á¤º¸°¡ µé¾î°¥ Student ¹è¿­ ¸¸µé±â
-   Student* student = malloc(sizeof(Student)*n);
+Student* createStudents(int n){ //nì¤„ ë§Œí¼ì˜ í•™ìƒ ì •ë³´ê°€ ë“¤ì–´ê°ˆ Student ë°°ì—´ ë§Œë“¤ê¸°
+   Student* student = (Student*)malloc(sizeof(Student)*(n+1));
    return student;
 }
 
@@ -16,7 +16,7 @@ void appendStudent(Student *students, int index, Student student){
    students[index] = student;
 }
 
-void printStudents(FILE *output, Student *students, int length) { //lengthÀÇ ¼ö¸¸Å­ ¹İº¹. ÆÄÀÏ¿¡ ÇĞ»ı ÀÌ¸§°ú ÇĞ¹øÀ» ¾´´Ù.
+void printStudents(FILE *output, Student *students, int length) { //lengthì˜ ìˆ˜ë§Œí¼ ë°˜ë³µ. íŒŒì¼ì— í•™ìƒ ì´ë¦„ê³¼ í•™ë²ˆì„ ì“´ë‹¤.
   for (int i = 0; i < length; i++) {
     fprintf(output, "name: %s id: %d\n", students[i].name, students[i].id);
   }

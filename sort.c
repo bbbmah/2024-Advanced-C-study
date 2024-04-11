@@ -1,10 +1,10 @@
 #include "sort.h"
 
-int compareByName(Student a, Student b){ // a¿Í b¸¦ ÀÌ¸§ ±âÁØÀ¸·Î ºñ±³, a°¡ ÀÛÀ¸¸é -1, °°À¸¸é 0, b°¡ ÀÛÀ¸¸é 1 ¹İÈ¯
+int compareByName(Student a, Student b){ // aì™€ bë¥¼ ì´ë¦„ ê¸°ì¤€ìœ¼ë¡œ ë¹„êµ, aê°€ ì‘ìœ¼ë©´ -1, ê°™ìœ¼ë©´ 0, bê°€ ì‘ìœ¼ë©´ 1 ë°˜í™˜
    return strcmp(a.name, b.name);
 }
 
-int compareById(Student a, Student b){ // a¿Í b¸¦ ÇĞ¹ø ±âÁØÀ¸·Î ºñ±³, a°¡ ÀÛÀ¸¸é -1, °°À¸¸é 0, b°¡ ÀÛÀ¸¸é 1 ¹İÈ¯
+int compareById(Student a, Student b){ // aì™€ bë¥¼ í•™ë²ˆ ê¸°ì¤€ìœ¼ë¡œ ë¹„êµ, aê°€ ì‘ìœ¼ë©´ -1, ê°™ìœ¼ë©´ 0, bê°€ ì‘ìœ¼ë©´ 1 ë°˜í™˜
    if(a.id<b.id){
       return -1;
    }
@@ -16,14 +16,15 @@ int compareById(Student a, Student b){ // a¿Í b¸¦ ÇĞ¹ø ±âÁØÀ¸·Î ºñ±³, a°¡ ÀÛÀ¸¸é
    }
 }
 
-void quickSort(Student *students, int length, int (*compare)(Student, Student)){ //¸·¸Å°³º¯¼ö¿¡ ºñ±³ÇÒ°ÍÀÇ ºñ±³ÇÔ¼ö¸¦ ³ÖÀ½(ÇÔ¼öÆ÷ÀÎÅÍ)
+void quickSort(Student *students, int length, int (*compare)(Student, Student)){ //ë§‰ë§¤ê°œë³€ìˆ˜ì— ë¹„êµí• ê²ƒì˜ ë¹„êµí•¨ìˆ˜ë¥¼ ë„£ìŒ(í•¨ìˆ˜í¬ì¸í„°)
    Student temp;
    for(int i = 0; i < length - 1 ; i++){
-      for(int j = 0; j < length - i; j++){
+      for(int j = 0; j < length - i - 1; j++){
          if(compare(students[j], students[j+1]) > 0){
             temp = students[j+1];
             students[j+1] = students[j];
             students[j] = temp;
+            //printf("J is %d | %s, %d / %s, %d\n", j, students[j].name, students[j].id,students[j+1].name, students[j+1].id);
          }
       }
    }

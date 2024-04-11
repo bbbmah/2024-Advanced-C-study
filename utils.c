@@ -1,6 +1,6 @@
 #include "utils.h"
 
-SortBy setSortBy(const char *filename) { //ÆÄÀÏÀÇ ÀÌ¸§¿¡ name / id °¡ µé¾î°¡ÀÖ´ÂÁö¸¦ ÅëÇØ ¹«¾ùÀ» ±âÁØÀ¸·Î Á¤·ÄÇÒ °ÍÀÎÁö ¹İÈ¯
+SortBy setSortBy(const char *filename) { //íŒŒì¼ì˜ ì´ë¦„ì— name / id ê°€ ë“¤ì–´ê°€ìˆëŠ”ì§€ë¥¼ í†µí•´ ë¬´ì—‡ì„ ê¸°ì¤€ìœ¼ë¡œ ì •ë ¬í•  ê²ƒì¸ì§€ ë°˜í™˜
     if (strstr(filename, "name")) {
         return NAME;
     }
@@ -12,7 +12,7 @@ SortBy setSortBy(const char *filename) { //ÆÄÀÏÀÇ ÀÌ¸§¿¡ name / id °¡ µé¾î°¡ÀÖ´Â
     exit(EXIT_FAILURE);
 }
 
-int countLines(FILE *input) { //ÁÙ ¼ö(ÇĞ»ı ¼ö ¹İÈ¯)
+int countLines(FILE *input) { //ì¤„ ìˆ˜(í•™ìƒ ìˆ˜ ë°˜í™˜)
     int count = 0;
     
     char line[MAX_BUFFER_SIZE];

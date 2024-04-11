@@ -6,44 +6,44 @@ int main(int argc, char* argv[]) { // [TODO] Fill in the parameters
     FILE *input, *output;
     char *filename;
 
-    if (strcmp(argv[1],"try/id_sort.in") != 0 || strcmp(argv[1],"try/name_sort.in") != 0) { // [TODO] Fill in the condition //argv¼Ó ÆÄÀÏ¸í(ÃßÁ¤)ÀÇ Æ÷¸äÀÌ Á¤È®ÇÑ °Í°ú ´Ù¸£´Ù¸é
+    if (strcmp(argv[1],"try/id_sort.in") != 0 && strcmp(argv[1],"try/name_sort.in") != 0) { // [TODO] Fill in the condition //argvì† íŒŒì¼ëª…(ì¶”ì •)ì˜ í¬ë©§ì´ ì •í™•í•œ ê²ƒê³¼ ë‹¤ë¥´ë‹¤ë©´
         fprintf(stderr, "Command should be format like below\n");
-        fprintf(stderr, "%s try/*_sort.in\n", argv[0]); // [TODO] Fill in the arguments Á¤È®ÇÑ Æ÷¸ä ÀÔ·Â
+        fprintf(stderr, "%s try/*_sort.in\n", argv[0]); // [TODO] Fill in the arguments ì •í™•í•œ í¬ë©§ ì…ë ¥
         exit(EXIT_FAILURE);
     }
 
-    filename = strdup(argv[1]); // [TODO] Fill in the arguments //ÀÔ·ÂµÇ´Â ÆÄÀÏ¸í ÀÔ·Â
-    input = fopen(filename, "r"); //ÀÔ·ÂµÈ ÆÄÀÏ¸íÀ¸·Î ÆÄÀÏÀ» ¿¬´Ù.
+    filename = strdup(argv[1]); // [TODO] Fill in the arguments //ì…ë ¥ë˜ëŠ” íŒŒì¼ëª… ì…ë ¥
+    input = fopen(filename, "r"); //ì…ë ¥ëœ íŒŒì¼ëª…ìœ¼ë¡œ íŒŒì¼ì„ ì—°ë‹¤.
     if (input == NULL) {
         fprintf(stderr, "Input file error\n");
         exit(EXIT_FAILURE);
     }
 
-    strcpy(strstr(filename, "in"), "out");//filenameÀÇ inÀ» outÀ¸·Î º¯È¯
-    output = fopen(filename, "w");//[filename].outÀ» ¿­±â
-    if (output == NULL) {//[filename].outÀÌ ¿­¸®Áö ¾ÊÀ¸¸é
+    strcpy(strstr(filename, "in"), "out");//filenameì˜ inì„ outìœ¼ë¡œ ë³€í™˜
+    output = fopen(filename, "w");//[filename].outì„ ì—´ê¸°
+    if (output == NULL) {//[filename].outì´ ì—´ë¦¬ì§€ ì•Šìœ¼ë©´
         fprintf(stderr, "Output file error\n");
         exit(EXIT_FAILURE);
     }
 
     char line[MAX_BUFFER_SIZE];
-    int length = countLines(input); //ÇĞ»ı¼ö
+    int length = countLines(input); //í•™ìƒìˆ˜
     int index = 0;
-    Student *students = createStudents(length); // [TODO] Fill in the arguments //ÇĞ»ı Á¤º¸°¡ µé¾î°¥ Student¹è¿­ ¸¸µé±â
+    Student *students = createStudents(length); // [TODO] Fill in the arguments //í•™ìƒ ì •ë³´ê°€ ë“¤ì–´ê°ˆ Studentë°°ì—´ ë§Œë“¤ê¸°
 
-    while (fgets(line, MAX_BUFFER_SIZE, input) != NULL) { //ÆÄÀÏÀ» ÇÑ ÁÙ¾¿ ÀĞ´Â´Ù.
+    while (fgets(line, MAX_BUFFER_SIZE, input) != NULL) { //íŒŒì¼ì„ í•œ ì¤„ì”© ì½ëŠ”ë‹¤.
         char name[MAX_BUFFER_SIZE];
         int id;
 
         sscanf(line, "name: %s major: %*s id: %d", name, &id); // [TODO] Fill in the arguments
-        appendStudent(students, index, newStudent(name, id)); // [TODO] Fill in the arguments //creatStudent¿¡¼­ ¸¸µç ¹è¿­¿¡ ÀÔ·Â¹ŞÀº ÇĞ»ı Á¤º¸ ³Ö±â
+        appendStudent(students, index++, newStudent(name, id)); // [TODO] Fill in the arguments //creatStudentì—ì„œ ë§Œë“  ë°°ì—´ì— ì…ë ¥ë°›ì€ í•™ìƒ ì •ë³´ ë„£ê¸°
     }
 
-    SortBy sortBy = setSortBy(filename); // [TODO] Fill in the arguments //Á¤·ÄÇÒ ±âÁØ ¹Ş±â ()
+    SortBy sortBy = setSortBy(filename); // [TODO] Fill in the arguments //ì •ë ¬í•  ê¸°ì¤€ ë°›ê¸° ()
     switch (sortBy) {
     case NAME:
-        quickSort(students, length, compareByName); // [TODO] Fill in the arguments // students ¹è¿­ ¼Ó¿¡¼­ sortÇÏ±â
-        printStudents(output, students, length); // [TODO] Fill in the arguments //sortÇÑ °ÍÀ» ÆÄÀÏ¿¡ ÀÔ·ÂÇÏ±â
+        quickSort(students, length, compareByName); // [TODO] Fill in the arguments // students ë°°ì—´ ì†ì—ì„œ sortí•˜ê¸°
+        printStudents(output, students, length); // [TODO] Fill in the arguments //sortí•œ ê²ƒì„ íŒŒì¼ì— ì…ë ¥í•˜ê¸°
         break;
     
     case ID:
@@ -55,7 +55,8 @@ int main(int argc, char* argv[]) { // [TODO] Fill in the parameters
         exit(EXIT_FAILURE);
     }
     
-    freeStudents(students, length); // [TODO] Fill in the arguments
+    //freeStudents(students, length); // [TODO] Fill in the arguments
+    free(students); //ìˆ˜ì •ìš”í•¨
     free(filename);
     fclose(input);
     fclose(output);
