@@ -7,13 +7,17 @@ Student* createStudents(int n){ //n줄 만큼의 학생 정보가 들어갈 Stud
 
 Student newStudent(char *name, int id){
    Student temp;
-   temp.name = name;
+   temp.name = malloc(strlen(name) + 1);
+   strcpy(temp.name, name);
    temp.id = id;
    return temp;
 }
 
 void appendStudent(Student *students, int index, Student student){
+   //strcpy(students[index].name, student.name);
+   //students[index].id = student.id;
    students[index] = student;
+   //fordubug printf("%s, %d\n", students[index].name, students[index].id);
 }
 
 void printStudents(FILE *output, Student *students, int length) { //length의 수만큼 반복. 파일에 학생 이름과 학번을 쓴다.
