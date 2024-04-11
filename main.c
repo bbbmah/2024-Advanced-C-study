@@ -37,7 +37,6 @@ int main(int argc, char* argv[]) { // [TODO] Fill in the parameters
 
         sscanf(line, "name: %s major: %*s id: %d\n", name, &id); // [TODO] Fill in the arguments
         appendStudent(students, index++, newStudent(name, id)); // [TODO] Fill in the arguments //creatStudent에서 만든 배열에 입력받은 학생 정보 넣기
-        //printf("byname : %s, %d\n", students[index-1].name, students[index-1].id);
     }
 
     SortBy sortBy = setSortBy(filename); // [TODO] Fill in the arguments //정렬할 기준 받기 ()
@@ -56,8 +55,7 @@ int main(int argc, char* argv[]) { // [TODO] Fill in the parameters
         exit(EXIT_FAILURE);
     }
     
-    //freeStudents(students, length); // [TODO] Fill in the arguments
-    free(students); //수정요함
+    freeStudents(students, length); // [TODO] Fill in the arguments
     free(filename);
     fclose(input);
     fclose(output);

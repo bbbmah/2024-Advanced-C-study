@@ -26,5 +26,5 @@ int countLines(FILE *input) { //줄 수(학생 수 반환)
 }
 
 void swap(Student *a, Student *b){ 
-
+    //이건 어디 쓰는건지 진짜 모르겠습니다;;
 }

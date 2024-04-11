@@ -24,7 +24,6 @@ void quickSort(Student *students, int length, int (*compare)(Student, Student)){
             temp = students[j+1];
             students[j+1] = students[j];
             students[j] = temp;
-            //printf("J is %d | %s, %d / %s, %d\n", j, students[j].name, students[j].id,students[j+1].name, students[j+1].id);
          }
       }
    }
