@@ -24,5 +24,5 @@ void printStudents(FILE *output, Student *students, int length) { //length의 �
 }
 
 void freeStudents(Student *students, int length){
-   free(students);
+   free(students); //여기 length가 왜 필요한지 모르겠ㅅ브니다;;
 }
